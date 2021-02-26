@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/opysium/opycord/issues"
   },
-  "homepage": "https://github.com/opysium/opycord#readme"
+  "homepage": "https://github.com/opysium/opycord#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
 }
