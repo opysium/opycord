@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const config = {
     token: process.env.token,
-    prefix: process.env.token
+    prefix: process.env.prefix
 };
 
 client.on('ready', () => {
