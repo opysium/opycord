@@ -1,6 +1,6 @@
 module.exports = {
     name: 'kaçcm',
-    execute(message, args) {
+    execute(message) {
         let length = Math.floor(Math.random() * Math.floor(50));
         if(!message.mentions.users.first()) {
             message.channel.send(`<@${message.author.id}> aletin ${length} santimetre.`);
