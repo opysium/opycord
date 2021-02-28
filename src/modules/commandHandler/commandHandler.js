@@ -16,5 +16,5 @@ module.exports.CallCommand = function(client, message) {
 	const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if(!command) return;
-    else command.execute(message, args);
+    else command.execute(message, args, commandName, client);
 }
