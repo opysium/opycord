@@ -12,7 +12,8 @@ module.exports.LoadCommandModules = function(client) {
 module.exports.CallCommand = function(client, config, message) {
     if(!message.content.startsWith(config.prefix) || message.author.bot) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-    if(!client.commands.has(command)) return;
-    client.commands.get(command).execute(message, args);
+	const commandName = args.shift().toLowerCase();
+    const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+    if(!command) return;
+    else command.execute(message, args);
 }
