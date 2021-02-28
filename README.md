@@ -7,6 +7,10 @@ Pull requests are welcome, just fork repo, add your code, test it and make pull 
 ## Features
 - Command Handler
 
+## Commands
+- Example: Just an example command format.
+- Country: Shows some informations about the country you wrote. Usage: prefix+country (countryname)
+
 ## To Do
 - Event logger
 - Music player
