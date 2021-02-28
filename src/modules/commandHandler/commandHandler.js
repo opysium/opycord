@@ -8,7 +8,7 @@ module.exports.LoadCommandModules = function(client) {
         client.commands.set(command.name, command);
         console.log(`${commandModule} command module loaded.`);
     }
-}
+};
 
 module.exports.CallCommand = function(client, message) {
     if(!message.content.startsWith(config.prefix) || message.author.bot) return;
@@ -17,4 +17,4 @@ module.exports.CallCommand = function(client, message) {
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if(!command) return;
     else command.execute(message, args, commandName, client);
-}
+};
