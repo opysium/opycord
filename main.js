@@ -4,12 +4,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandHandler = require('./src/modules/commandHandler/commandHandler.js');
 
-const dotenv = require('dotenv');
-dotenv.config();
-const config = {
-    token: process.env.token,
-    prefix: process.env.prefix
-};
+const config = require('./src/modules/config/config.js');
 
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
@@ -17,7 +12,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    commandHandler.CallCommand(client, config, message);
+    commandHandler.CallCommand(client, message);
 });
 
 client.login(config.token);

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const config = require('../config/config.js');
 
 module.exports.LoadCommandModules = function(client) {
     const commandModules = fs.readdirSync('./src/modules/commandHandler/commands/').filter(file => file.endsWith('.js'));
@@ -9,7 +10,7 @@ module.exports.LoadCommandModules = function(client) {
     }
 }
 
-module.exports.CallCommand = function(client, config, message) {
+module.exports.CallCommand = function(client, message) {
     if(!message.content.startsWith(config.prefix) || message.author.bot) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
