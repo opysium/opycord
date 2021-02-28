@@ -4,8 +4,10 @@ A open source Discord bot.
 ## Contributing
 Pull requests are welcome, just fork repo, add your code, test it and make pull request.
 
-## To Do
+## Features
 - Command Handler
+
+## To Do
 - Event logger
 - Music player
 
