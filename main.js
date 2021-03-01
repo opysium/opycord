@@ -9,6 +9,7 @@ const config = require('./src/modules/config/config.js');
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
     console.log(`${client.user.tag} ready.`);
+    client.user.setPresence({activity: {name: 'English: $$help Türkçe: $$yardım'}, status: 'online'});
 });
 
 client.on('message', (message) => {
