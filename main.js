@@ -8,7 +8,6 @@ const config = require('./src/modules/config/config.js');
 
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
-    country.LoadCountries(client);
     console.log(`${client.user.tag} ready.`);
 });
 
