@@ -9,14 +9,14 @@ module.exports = {
             if(commandName == 'zar') {
                 message.channel.send(`<@${message.author.id}> bir zar attı ve ${randomDice1} geldi.`);
             } else {
-                message.channel.send(`<@${message.author.id}> has roll a dice and get ${randomDice1}.`);
+                message.channel.send(`<@${message.author.id}> has rolled a dice and landed on ${randomDice1}.`);
             }
         } else if(args[0] == 'double' || args[0] == 'çift') {
             let randomDice2 = Math.floor(Math.random() * Math.floor(6) + 1);
             if(commandName == 'zar') {
                 message.channel.send(`<@${message.author.id}> çift zar attı ve ${randomDice1} ${randomDice2} geldi.`);
             } else {
-                message.channel.send(`<@${message.author.id}> has roll two dice and get ${randomDice1} ${randomDice2}.`);
+                message.channel.send(`<@${message.author.id}> has rolled two dices and landed on ${randomDice1} ${randomDice2}.`);
             }
         } else if(args[0] == 'help' || args[0] == 'yardım') {
             let embed;
@@ -29,7 +29,7 @@ module.exports = {
             } else {
                 embed = new Discord.MessageEmbed()
                     .setTitle('Dice')
-                    .setDescription('Rolls one or two dice, it will roll one dice if you don\'t assign any arguments.')
+                    .setDescription('Rolls one or two dices depends on what argument you assing, it will roll one dice if you don\'t assign any arguments.')
                     .addFields({name: 'Arguments', value: 'single, double, help'});
                     message.channel.send(embed);
             }
