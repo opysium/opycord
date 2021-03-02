@@ -4,8 +4,8 @@ module.exports = {
     name: 'help',
     aliases: ['yardım'],
     execute(message, args, commandName, client) {
+        let embed;
         if(!args[0]) {
-            let embed;
             if(commandName == 'yardım') {
                 embed = new Discord.MessageEmbed()
                 .setTitle('Merhaba, benim adım Opycord')
@@ -27,12 +27,11 @@ module.exports = {
             }
             message.channel.send(embed);
         } else if(args[0] == 'commands' || args[0] == 'cmd' || args[0] == 'komutlar') {
-            let embed;
             if(commandName == 'yardım') {
                 embed = new Discord.MessageEmbed()
                     .setTitle('Komutlar')
                     .setDescription('Burada yalnızca komutlar gösterilmektedir, komutların parametrelerini öğrenmek için o komuta \'yardım\' parametresini ekleyebilirsiniz.')
-                    .addFields({name: 'Komutlar', value: 'yardım, zar, ülke'});
+                    .addFields({name: 'Komutlar', value: 'yardım, zar'});
             } else {
                 embed = new Discord.MessageEmbed()
                     .setTitle('Commands')
