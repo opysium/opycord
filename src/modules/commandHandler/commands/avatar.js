@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const usefulFunctions = require('../../utils/usefulFunctions.js');
 
 module.exports = {
     name: 'avatar',
@@ -10,38 +11,26 @@ module.exports = {
                 .setTitle('Avatar')
                 .setDescription(`<@${message.author.id}>'s avatar.`)
                 .setImage(message.author.avatarURL({size: 512}));
-            message.channel.send(embed);
         } else if(args[0] == 'help') {
-            let embed = new Discord.MessageEmbed()
+            embed = new Discord.MessageEmbed()
                 .setTitle('Avatar')
                 .setDescription('Avatar command sends the avatar of your or selected user. If you just write avatar command without any arguments it will send your own avatar, to select a user you can tag them in command or use their Discord ID.')
-                .addFields(
-                    {name: 'Arguments', value: 'help'}
-                );
-        } else if(args[0]) {
-            let userInfo;
-            if(message.mentions.users.first()) {
-                userInfo = message.mentions.users.first();
+                .addFields({name: 'Arguments', value: 'help'});
+        } else {
+            let user = await usefulFunctions.FindUser(message, args[0]);
+            if(!user) {
                 embed = new Discord.MessageEmbed()
-                    .setTitle('Avatar')
-                    .setDescription(`<@${userInfo.id}>'s avatar requested by <@${message.author.id}>`)
-                    .setImage(userInfo.avatarURL({size:512}));
+                    .setTitle('Error')
+                    .setDescription(`Sorry <@${message.author.id}>, ${args[0]} is not a valid user ID.`);
                 message.channel.send(embed);
+                return;
             } else {
-                userInfo = await message.guild.members.fetch(args[0]).catch(err => {});
-                if(!userInfo) {
-                    embed = new Discord.MessageEmbed()
-                        .setTitle('Error')
-                        .setDescription(`Sorry <@${message.author.id}>, ${args[0]} is not a valid user ID.`);
-                    message.channel.send(embed);
-                    return;
-                }
                 embed = new Discord.MessageEmbed()
                     .setTitle('Avatar')
-                    .setDescription(`<@${userInfo.user.id}>'s avatar requested by <@${message.author.id}>`)
-                    .setImage(userInfo.user.avatarURL({size: 512}));
+                    .setDescription(`<@${user.id}>'s avatar requested by <@${message.author.id}>`)
+                    .setImage(user.avatarURL({size: 512}));
             }
-            message.channel.send(embed);
         }
+        message.channel.send(embed);
     }
 }
