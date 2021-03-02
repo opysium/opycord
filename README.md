@@ -10,9 +10,8 @@ Pull requests are welcome, just fork repo, add your code, test it and make pull 
 ## Commands
 - Example: Just an example command format.
 - Help: Gives info about bot.
-- Country: Shows some informations about the country you wrote. (Only Turkish for now.)
 - Dice: Rolls one or two dice.
-
+- Avatar: Sends avatar of the user.
 
 ## To Do
 - Event logger
