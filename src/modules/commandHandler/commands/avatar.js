@@ -17,7 +17,7 @@ module.exports = {
                 .setDescription('Avatar command sends the avatar of your or selected user. If you just write avatar command without any arguments it will send your own avatar, to select a user you can tag them in command or use their Discord ID.')
                 .addFields(
                     {name: 'Arguments', value: 'help'}
-                )
+                );
         } else if(args[0]) {
             let userInfo;
             if(message.mentions.users.first()) {
