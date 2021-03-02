@@ -4,8 +4,8 @@ module.exports = {
     name: 'dice',
     aliases: ['zar'],
     execute(message, args, commandName, client) {
+        let embed;
         if(args[0] == 'help' || args[0] == 'yardım') {
-            let embed;
             if(commandName == 'zar') {
                 embed = new Discord.MessageEmbed()
                     .setTitle('Zar')
@@ -29,17 +29,18 @@ module.exports = {
         let randomDice1 = Math.floor(Math.random() * Math.floor(6) + 1);
         if(!args[0] || args[0] == 'single' || args[0] == 'tek') {
             if(commandName == 'zar') {
-                message.channel.send(`<@${message.author.id}> bir zar attı ve ${randomDice1} geldi.`);
+                embed = new Discord.MessageEmbed().setDescription(`<@${message.author.id}> bir zar attı ve ${randomDice1} geldi.`);
             } else {
-                message.channel.send(`<@${message.author.id}> has rolled a dice and landed on ${randomDice1}.`);
+                embed = new Discord.MessageEmbed().setDescription(`<@${message.author.id}> has rolled a dice and landed on ${randomDice1}.`);
             }
         } else if(args[0] == 'double' || args[0] == 'çift') {
             let randomDice2 = Math.floor(Math.random() * Math.floor(6) + 1);
             if(commandName == 'zar') {
-                message.channel.send(`<@${message.author.id}> çift zar attı ve ${randomDice1} ${randomDice2} geldi.`);
+                embed = new Discord.MessageEmbed().setDescription(`<@${message.author.id}> çift zar attı ve ${randomDice1} ${randomDice2} geldi.`);
             } else {
-                message.channel.send(`<@${message.author.id}> has rolled two dices and landed on ${randomDice1} ${randomDice2}.`);
+                embed = new Discord.MessageEmbed().setDescription(`<@${message.author.id}> has rolled two dices and landed on ${randomDice1} ${randomDice2}.`);
             }
         }
+        message.channel.send(embed);
     }
 }
