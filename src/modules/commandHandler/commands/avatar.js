@@ -18,23 +18,29 @@ module.exports = {
                 .addFields(
                     {name: 'Arguments', value: 'help'}
                 )
-        } else if(args[0] && message.mentions.users.first()) {
-            let userInfo = message.mentions.users.first();
-            embed = new Discord.MessageEmbed()
-                .setTitle('Avatar')
-                .setDescription(`<@${userInfo.id}>'s avatar requested by <@${message.author.id}>`)
-                .setImage(userInfo.avatarURL({size:512}));
-            message.channel.send(embed);
         } else if(args[0]) {
-            let targetUser = await message.guild.members.fetch(args[0]).catch(err => {});
-            if(!targetUser) {
-                message.channel.send(`put invalid id error here`);
-                return;
+            let userInfo;
+            if(message.mentions.users.first()) {
+                userInfo = message.mentions.users.first();
+                embed = new Discord.MessageEmbed()
+                    .setTitle('Avatar')
+                    .setDescription(`<@${userInfo.id}>'s avatar requested by <@${message.author.id}>`)
+                    .setImage(userInfo.avatarURL({size:512}));
+                message.channel.send(embed);
+            } else {
+                userInfo = await message.guild.members.fetch(args[0]).catch(err => {});
+                if(!userInfo) {
+                    embed = new Discord.MessageEmbed()
+                        .setTitle('Error')
+                        .setDescription(`Sorry <@${message.author.id}>, ${args[0]} is not a valid user ID.`);
+                    message.channel.send(embed);
+                    return;
+                }
+                embed = new Discord.MessageEmbed()
+                    .setTitle('Avatar')
+                    .setDescription(`<@${userInfo.user.id}>'s avatar requested by <@${message.author.id}>`)
+                    .setImage(userInfo.user.avatarURL({size: 512}));
             }
-            embed = new Discord.MessageEmbed()
-                .setTitle('Avatar')
-                .setDescription(`<@${targetUser.user.id}>'s avatar requested by <@${message.author.id}>`)
-                .setImage(targetUser.user.avatarURL({size: 512}));
             message.channel.send(embed);
         }
     }
