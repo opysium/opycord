@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandHandler = require('./src/modules/commandHandler/commandHandler.js');
 
-const config = require('./src/modules/config/config.js');
+const config = require('./src/modules/config.js');
 
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);

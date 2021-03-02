@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const usefulFunctions = require('../../utils/usefulFunctions.js');
+const usefulFunctions = require('../../usefulFunctions.js');
 
 module.exports = {
     name: 'avatar',

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const config = require('../config/config.js');
+const config = require('../config.js');
 
 module.exports.LoadCommandModules = function(client) {
     const commandModules = fs.readdirSync('./src/modules/commandHandler/commands/').filter(file => file.endsWith('.js'));
