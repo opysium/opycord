@@ -21,5 +21,3 @@ Pull requests are welcome, just fork repo, add your code, test it and make pull 
 - English is not my main language.
 - I am new in JavaScript and NodeJS.
 - I am not using a paid VPS to keep this bot up. This bot is very limited for some things such as multi guild support with database, saving guild settings to somewhere is not possible.
-- I am making command names, alias names and parameters with Turkish and English support, it will return a Turkish message if you talk with bot in Turkish language.
-- Variables, functions, modules etc. will be English but their content (Like messages.) may be Turkish.

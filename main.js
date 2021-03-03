@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
     console.log(`${client.user.tag} ready.`);
-    client.user.setPresence({activity: {name: 'English: $$help Türkçe: $$yardım'}, status: 'online'});
+    client.user.setPresence({activity: {name: '$$help'}, status: 'online'});
 });
 
 client.on('message', (message) => {
