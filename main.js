@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.commands = new Discord.Collection();
 const commandHandler = require('./src/modules/commandHandler/commandHandler.js');
-
 const config = require('./src/modules/config.js');
+
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
 
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
