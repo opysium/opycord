@@ -1,10 +1,10 @@
-const randomMessages = ['At your service, sir.', 'Yes, sir.'];
+const botStatus = require('../../status.js');
 
 module.exports = {
     name: 'opycord',
     aliases: [],
-    execute(message, client) {
-        const randomMessage = randomMessages[Math.floor(Math.random() * Math.floor(randomMessages.length))];
+    async execute(message, client) {
+        const randomMessage = await botStatus.SelectMessage();
         message.channel.send(randomMessage);
     }
 };
