@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const commandHandler = require('./src/modules/commandHandler/commandHandler.js');
 const messageHandler = require('./src/modules/messageHandler/messageHandler.js');
-const botStatus = require('./src/modules/status.js');
 const config = require('./src/modules/config.js');
 
 const client = new Discord.Client();
@@ -11,7 +10,6 @@ client.messages = new Discord.Collection();
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
     messageHandler.LoadMessageModules(client);
-    botStatus.startInterval();
     console.log(`${client.user.tag} ready.`);
     client.user.setPresence({activity: {name: '$$help'}, status: 'online'});
 });
