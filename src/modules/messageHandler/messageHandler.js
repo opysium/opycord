@@ -12,6 +12,7 @@ module.exports.LoadMessageModules = function(client) {
 
 module.exports.CallMessage = function(client, message) {
     const thisMessage = client.messages.get(message.content) || client.messages.find(msg => msg.aliases && msg.aliases.includes(message.content));
-    if(!thisMessage) return;
+    if(!thisMessage) return 0;
     else thisMessage.execute(message, client);
+    return 1;
 }
