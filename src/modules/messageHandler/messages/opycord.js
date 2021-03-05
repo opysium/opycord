@@ -5,6 +5,6 @@ module.exports = {
     name: 'opycord',
     aliases: [],
     async execute(message, client) {
-        message.channel.send(randomMessages[random.int(0, randomMessages.length)]);
+        message.channel.send(randomMessages[random.int(0, 4)]);
     }
 };
