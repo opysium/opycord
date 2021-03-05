@@ -19,7 +19,7 @@ module.exports = {
                     .addFields({name: 'Commands', value: 'help, dice, avatar'});
         } else if(args[0] == 'messages') {
             embed.setTitle('Messages')
-                .setDescription('Messages are some funny things, they\'re like commands but works without prefixes.')
+                .setDescription('Messages are some funny stuff that responds to messages, they\'re like commands but works without prefixes.')
                 .addFields({name: 'Messages', value: 'opycord'});
         }
         message.channel.send(embed);
