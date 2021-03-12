@@ -1,5 +1,6 @@
 const fs = require('fs');
 const config = require('../config.js');
+const cooldowns = require('../cooldown.js');
 
 module.exports.LoadCommandModules = function(client) {
     const commandModules = fs.readdirSync('./src/modules/commandHandler/commands/').filter(file => file.endsWith('.js'));
@@ -16,6 +17,9 @@ module.exports.CallCommand = function(client, message) {
 	const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if(!command) return 0;
-    else command.execute(message, args, commandName, client);
+    else {
+        if(cooldowns.addCooldown(client, message.author)) return 0;
+        else command.execute(message, args, commandName, client);
+    }
     return 1;
 };

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const config = require('../config.js');
+const cooldowns = require('../cooldown.js');
 
 module.exports.LoadMessageModules = function(client) {
     const messageModules = fs.readdirSync('./src/modules/messageHandler/messages/').filter(file => file.endsWith('.js'));
@@ -13,6 +14,9 @@ module.exports.LoadMessageModules = function(client) {
 module.exports.CallMessage = function(client, message) {
     const thisMessage = client.messages.get(message.content) || client.messages.find(msg => msg.aliases && msg.aliases.includes(message.content));
     if(!thisMessage) return 0;
-    else thisMessage.execute(message, client);
+    else {
+        if(cooldowns.addCooldown(client, message.author)) return 0;
+        else thisMessage.execute(message, client);
+    }
     return 1;
 }

@@ -6,6 +6,7 @@ const config = require('./src/modules/config.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.messages = new Discord.Collection();
+client.cooldowns = new Discord.Collection();
 
 client.on('ready', () => {
     commandHandler.LoadCommandModules(client);
