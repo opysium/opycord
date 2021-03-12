@@ -19,7 +19,6 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "mysql2": "^2.2.5",
     "random": "^3.0.3"
   }
 }
