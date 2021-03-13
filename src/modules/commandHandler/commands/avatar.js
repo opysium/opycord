@@ -22,7 +22,7 @@ module.exports = {
             } else {
                 embed.setTitle('Avatar')
                     .setDescription(`<@${user.id}>'s avatar requested by <@${message.author.id}>`)
-                    .setImage(user.avatarURL({size: 512}));
+                    .setImage(user.avatarURL({size: 512, dynamic: true}));
             }
         }
         message.channel.send(embed);
