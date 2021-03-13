@@ -9,7 +9,7 @@ module.exports = {
         if(!args[0]) {
             embed.setTitle('Avatar')
                 .setDescription(`<@${message.author.id}>'s avatar.`)
-                .setImage(message.author.avatarURL({size: 512}));
+                .setImage(message.author.avatarURL({size: 512, dynamic: true}));
         } else if(args[0] == 'help') {
             embed.setTitle('Avatar')
                 .setDescription('Avatar command sends the avatar of your or selected user. If you just write avatar command without any arguments it will send your own avatar, to select a user you can tag them in command or use their Discord ID.')
